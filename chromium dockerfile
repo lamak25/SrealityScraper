@@ -1,0 +1,32 @@
+# Base image with PostgreSQL and Python
+FROM postgres:latest
+
+# Install Python and necessary dependencies
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip
+
+# Install Chrome browser and dependencies for Selenium
+RUN apt-get install -y curl unzip && \
+    curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb && \
+    dpkg -i chrome.deb && \
+    apt-get install -y -f && \
+    rm chrome.deb
+
+# Install Selenium and other Python packages
+RUN pip3 install selenium
+
+# Set environment variables for PostgreSQL
+ENV POSTGRES_USER=myuser
+ENV POSTGRES_PASSWORD=mypassword
+ENV POSTGRES_DB=mydatabase
+
+# Set environment variables for Selenium Chrome driver
+ENV CHROME_DRIVER=/usr/bin/chromedriver
+ENV PATH=$PATH:/usr/bin/chromedriver
+
+# Copy your Python script and other necessary files
+COPY your-script.py /
+
+# Set the entrypoint command
+CMD ["python3", "/your-script.py"]
+

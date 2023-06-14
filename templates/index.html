@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Sreality.cz scraper</title>
+</head>
+<body>
+   <div class="text-center pt-5 pb-5">
+      <h1>Show first 500 offers on Sreality.cz</h1>
+      <p>By Kamil Kader Agha</p>
+   </div>
+      <div class="container">
+         <div class="row">
+            {items}
+         </div>
+      </div>
+
+   <!-- TODO - Button to regenerate
+   <div class="container mt-3">
+      <div class="row justify-content-center">
+         <div class="col-sm-6">
+            <button id="regenerateBtn" class="btn btn-primary btn-block">Regenerate</button>
+         </div>
+      </div>
+   </div> -->
+
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script>
+      // TODO - to generate tiles here, not on the server
+      // var button = document.getElementById("regenerateBtn");
+      // button.addEventListener("click", function() {
+      //    fetch("/regenerate")
+      //    .then(function(response) {
+      //       console.log("Server response:", response);
+      //    })
+      //    .catch(function(error) {
+      //       console.error("Error:", error);
+      //    });
+      // });
+   </script>
+</body>
+</html>

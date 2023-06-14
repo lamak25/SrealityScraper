@@ -1,0 +1,40 @@
+
+0. download and setup selenium chrome browser
+
+1. Start the DB server
+docker run --name some-postgres -e POSTGRES_PASSWORD=my_super_strong_password -d postgres
+
+2. RUN CRAWLER TO POPULATE DB
+cd sreality_scraper
+scrapy crawl sreality
+
+3. RUN THE SERVER
+cd ..
+python3 web_server.py
+
+------------------------------------
+
+# SEE FILES INSIDE DOCKER CONTAINER:
+docker run --rm -it --entrypoint /bin/bash --volumes-from your-container-name your-image-name
+
+
+HOW TO BUILD/MAKE AND RUN DOCKER:
+# docker build -t your-image-name .
+# docker rm -f your-container-name # stop and remove old docker container
+# docker run -p 8080:8080 --name your-container-name your-image-name
+
+
+# DELETE OLD IMGS
+docker images # find ID
+docker rmi IMG_ID_OR_NAME # force with -f
+docker image prune  #(remove dangling (~ghosts) imgs)
+
+
+# How to run POSTGRESQL in docker
+# docker run --name some-postgres -e POSTGRES_PASSWORD=my_super_strong_password -d postgres
+# psql -U postgres -h 127.0.0.1 password=my_super_strong_password
+# psql -U postgres -h 127.0.0.1 -c "ALTER USER postgres WITH PASSWORD 'my_super_strong_password';"
+# su -c "psql -h 127.0.0.1 -c \"ALTER ROLE postgres WITH LOGIN PASSWORD 'my_super_strong_password' \"" postgres
+
+Change number of pages to crawl!
+Add tests, change a bit dockercompose, so it uses variables/environment such as DB connections, selenium directory, numer of pages to scrape, running one shell file instead of two CMDs, etc. , add button to regenerate listings,

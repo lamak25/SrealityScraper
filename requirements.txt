@@ -1,0 +1,5 @@
+psycopg2-binary==2.9.6
+Scrapy==2.9.0
+selenium==4.10.0
+beautifulsoup4==4.12.2
+

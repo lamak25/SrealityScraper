@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "my_super_strong_password"
+      POSTGRES_DB: "postgres"
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+
+  web_server:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 8080:8080
+    network_mode: host
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+
+# docker-compose up --build
